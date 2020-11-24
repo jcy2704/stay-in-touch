@@ -7,7 +7,7 @@
             <%= submit_tag  "Accept" %>
           <% end %>
       <% else %>
-          Friends
+          <%= label_tag 'Friends' %>
       <% end %>
     <% elsif !@invited.nil? %>
       <% if @invited.status == false %>
