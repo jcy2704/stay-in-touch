@@ -1,6 +1,15 @@
 <li>
-  Name: <%= user.name %>
+  <%= user.name %>
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+    <% if user != current_user %>
+      <% if !friendships.empty? %>
+        <% if !friendships.find_by(friend_id: user.id).nil? && friendships.find_by(friend_id: user.id).status == false %>
+            <%= label_tag "Pending" %>
+        <% else %>
+          <%= button_to  'Invite', friendships_path(friend_id: user.id), class: 'profile-link' %>
+        <% end %>
+      <% end %>
+    <% end %>
   </span>
 </li>
