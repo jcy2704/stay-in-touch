@@ -3,12 +3,16 @@
   <span class="profile-link">
     <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
     <% if user != current_user %>
-      <% if !friendships.empty? %>
-        <% if !friendships.find_by(friend_id: user.id).nil? && friendships.find_by(friend_id: user.id).status == false %>
-            <%= label_tag "Pending" %>
+      <% if friendships.empty? || friendships.find_by(friend_id: user.id).nil? %>
+        <% if invites[:was_invited].any? && invites[:was_invited].find_by(user_id: user.id).status == false %>
+          <%= form_tag(friendship_path(invites[:was_invited].find_by(user_id: user.id).id), method: :patch) do |f| %>
+          <%= button_to  "Accept" %>
+        <% end %>
         <% else %>
           <%= button_to  'Invite', friendships_path(friend_id: user.id), class: 'profile-link' %>
-        <% end %>
+        <%end%>
+      <% elsif friendships.find_by(friend_id: user.id).status == false %>
+        <%= label_tag "Pending" %>
       <% end %>
     <% end %>
   </span>

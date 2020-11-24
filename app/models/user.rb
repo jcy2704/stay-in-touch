@@ -13,10 +13,10 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :friends, through: :friendships, source: :friend
 
-  def friends
-    f = Friendship.where('user_id = ?', param)
-    f2 = Friendship.where('friend_id = ?', param)
+  def friends_join(param)
+    i_invited = Friendship.where('user_id = ?', param)
+    i_was_invited = Friendship.where('friend_id = ?', param)
 
-    friends_array = [f, f2]
+    friends_hash = { invited: i_invited, was_invited: i_was_invited }
   end
 end
