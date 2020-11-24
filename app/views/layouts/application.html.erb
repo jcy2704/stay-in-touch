@@ -9,6 +9,7 @@
   </head>
   <body>
     <nav class="nav">
+      <%= current_user.name if current_user %>
       <%= link_to 'Stay in touch', root_path %>
       <div class="menu">
         <div class="menu-item">
