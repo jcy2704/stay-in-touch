@@ -9,7 +9,6 @@
   </head>
   <body>
     <nav class="nav">
-      <%= current_user.name if current_user %>
       <%= link_to 'Stay in touch', root_path %>
       <div class="menu">
         <div class="menu-item">
@@ -20,6 +19,7 @@
         </div>
       </div>
       <% if current_user %>
+        <%= current_user.name %>
         <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
       <% else %>
         <%= link_to 'Sign in', user_session_path %>
