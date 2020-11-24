@@ -1,8 +1,8 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
   <% if @user != current_user %>
-    <% if !@friendships.nil? %>
-      <% if @friendships.status == false %>
+    <% if !@inivited.nil? %>
+      <% if @inivited.status == false %>
         <%= label_tag "Pending" %>
       <% end %>
     <% else %>
