@@ -1,19 +1,13 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
   <% if @user != current_user %>
-    <% if !@was_invited.nil? %>
-      <% if @was_invited.status == false %>
-          <%= form_tag(friendship_path(@was_invited.id), method: :patch) do |f| %>
-            <%= submit_tag  "Accept" %>
-          <% end %>
-      <% else %>
-          Friends
+    <% if !@invited.nil? && @invited.status == false %>
+      <%= label_tag "Pending" %>
+    <% elsif !@was_invited.nil? && @was_invited.status != true %>
+      <%= form_tag(friendship_path(@was_invited.id), method: :patch) do |f| %>
+        <%= submit_tag  "Accept" %>
       <% end %>
-    <% elsif !@invited.nil? %>
-      <% if @invited.status == false %>
-        <%= label_tag "Pending" %>
-      <% end %>
-    <% else %>
+    <% elsif @invited.nil? && @was_invited.nil? %>
       <%= button_to "Invite", friendships_path(user_id: current_user.id, friend_id: @user.id) %>
     <% end %>
   <%end%>
