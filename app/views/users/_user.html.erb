@@ -9,6 +9,8 @@
             <%= form_tag(friendship_path(invites[:was_invited].find_by(user_id: user.id).id), method: :patch) do |f| %>
               <%= submit_tag  "Accept" %>
             <% end %>
+          <% else %>
+            <%= label_tag 'Friends' %>
           <% end %>
         <% else %>
           <%= button_to  'Invite', friendships_path(friend_id: user.id) %>

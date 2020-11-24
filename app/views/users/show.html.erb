@@ -9,6 +9,8 @@
       <% end %>
     <% elsif @invited.nil? && @was_invited.nil? %>
       <%= button_to "Invite", friendships_path(user_id: current_user.id, friend_id: @user.id) %>
+    <% else %>
+      <%= label_tag 'Friends' %>
     <% end %>
   <%end%>
   <article class="timeline">
