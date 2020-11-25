@@ -11,7 +11,8 @@ class UsersController < ApplicationController
     @invited = Friendship.find_by(user_id: current_user.id, friend_id: @user.id)
     @was_invited = Friendship.find_by(user_id: @user.id, friend_id: current_user.id)
 
-    @all_friends = Friendship.all.where(user_id: @user.id, status: true).or(Friendship.all.where(friend_id: @user.id, status: true))
+    @all_friends = Friendship.all.where(user_id: @user.id, status: true)
+    @all_friends = @all_friends.or(Friendship.all.where(friend_id: @user.id, status: true))
 
     @invites = @user.friends_join(@user.id)
   end

@@ -17,6 +17,6 @@ class User < ApplicationRecord
     i_invited = Friendship.where('user_id = ?', param)
     i_was_invited = Friendship.where('friend_id = ?', param)
 
-    friends_hash = { invited: i_invited, was_invited: i_was_invited }
+    { invited: i_invited, was_invited: i_was_invited }
   end
 end
