@@ -1,5 +1,21 @@
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
+  <h2><%= "#{@user.name}" %></h2>
+  <% if @user != current_user %>
+    <% if !@invited.nil? && @invited.status == false %>
+      <%= label_tag "Pending" %>
+    <% elsif !@was_invited.nil? && @was_invited.status != true %>
+      <%= form_tag(friendship_path(@was_invited.id), method: :patch) do |f| %>
+        <%= submit_tag  "Accept" %>
+      <% end %>
+      <%= form_tag(friendship_path(@was_invited.id), method: :delete) do |f| %>
+        <%= submit_tag  "Decline", data: { confirm: 'Are you sure you want to decline?' } %>
+      <% end %>
+    <% elsif @invited.nil? && @was_invited.nil? %>
+      <%= button_to "Invite", friendships_path(user_id: current_user.id, friend_id: @user.id) %>
+    <% else %>
+      <%= label_tag 'Friends', nil, class:'friend-label' %>
+    <% end %>
+  <%end%>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
@@ -7,3 +23,20 @@
     </ul>
   </article>
 </section>
+
+<aside class="friends-list">
+  <h2>Friends</h2>
+  <ul>
+    <% @invites[:invited].where(status: true).each do |x| %>
+    <li>
+      <%= link_to  User.find(x.friend_id).name, user_path(User.find(x.friend_id).id) %>
+    </li>
+    <% end %>
+
+    <% @invites[:was_invited].where(status: true).each do |x| %>
+    <li>
+      <%= link_to  User.find(x.user_id).name, user_path(User.find(x.user_id).id) %>
+    </li>
+    <% end %>
+  </ul>
+</aside>

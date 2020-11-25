@@ -1,5 +1,5 @@
 <section class="users-section">
   <ul class="users-list">
-    <%= render @users %>
+    <%= render @users, friendships: current_user.friendships, invites: current_user.friends_join(current_user.id) %>
   </ul>
 </section>
