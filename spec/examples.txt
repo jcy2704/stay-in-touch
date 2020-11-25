@@ -1,17 +1,19 @@
 example_id                                      | status | run_time        |
 ----------------------------------------------- | ------ | --------------- |
-./spec/feature/forgot_pass_feature_spec.rb[1:1] | passed | 0.3269 seconds  |
-./spec/feature/forgot_pass_feature_spec.rb[1:2] | passed | 0.03456 seconds |
-./spec/feature/forgot_pass_feature_spec.rb[1:3] | passed | 0.03221 seconds |
-./spec/feature/sign_in_feature_spec.rb[1:1]     | passed | 0.08326 seconds |
-./spec/feature/sign_in_feature_spec.rb[1:2]     | passed | 0.03925 seconds |
-./spec/feature/sign_in_feature_spec.rb[1:3]     | passed | 0.33749 seconds |
-./spec/feature/sign_in_feature_spec.rb[1:4]     | passed | 0.03588 seconds |
-./spec/feature/sign_in_feature_spec.rb[1:5]     | passed | 0.02052 seconds |
-./spec/feature/sign_up_feature_spec.rb[1:1]     | passed | 0.04098 seconds |
-./spec/feature/sign_up_feature_spec.rb[1:2]     | passed | 0.03889 seconds |
-./spec/feature/sign_up_feature_spec.rb[1:3]     | passed | 0.05021 seconds |
-./spec/feature/sign_up_feature_spec.rb[1:4]     | passed | 0.03687 seconds |
-./spec/feature/sign_up_feature_spec.rb[1:5]     | passed | 0.03746 seconds |
-./spec/feature/sign_up_feature_spec.rb[1:6]     | passed | 0.03725 seconds |
-./spec/feature/sign_up_feature_spec.rb[1:7]     | passed | 0.04101 seconds |
+./spec/feature/forgot_pass_feature_spec.rb[1:1] | passed | 0.29237 seconds |
+./spec/feature/forgot_pass_feature_spec.rb[1:2] | passed | 0.05235 seconds |
+./spec/feature/forgot_pass_feature_spec.rb[1:3] | passed | 0.03387 seconds |
+./spec/feature/sign_in_feature_spec.rb[1:1]     | passed | 0.04701 seconds |
+./spec/feature/sign_in_feature_spec.rb[1:2]     | passed | 0.04156 seconds |
+./spec/feature/sign_in_feature_spec.rb[1:3]     | passed | 0.04501 seconds |
+./spec/feature/sign_in_feature_spec.rb[1:4]     | passed | 0.03926 seconds |
+./spec/feature/sign_in_feature_spec.rb[1:5]     | passed | 0.01736 seconds |
+./spec/feature/sign_up_feature_spec.rb[1:1]     | passed | 0.38266 seconds |
+./spec/feature/sign_up_feature_spec.rb[1:2]     | passed | 0.03633 seconds |
+./spec/feature/sign_up_feature_spec.rb[1:3]     | passed | 0.03557 seconds |
+./spec/feature/sign_up_feature_spec.rb[1:4]     | passed | 0.0411 seconds  |
+./spec/feature/sign_up_feature_spec.rb[1:5]     | passed | 0.04045 seconds |
+./spec/feature/sign_up_feature_spec.rb[1:6]     | passed | 0.06952 seconds |
+./spec/feature/sign_up_feature_spec.rb[1:7]     | passed | 0.03989 seconds |
+./spec/models/friendship_spec.rb[1:1]           | passed | 0.08273 seconds |
+./spec/models/friendship_spec.rb[1:2]           | passed | 0.0045 seconds  |
