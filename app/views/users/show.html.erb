@@ -7,6 +7,9 @@
       <%= form_tag(friendship_path(@was_invited.id), method: :patch) do |f| %>
         <%= submit_tag  "Accept" %>
       <% end %>
+      <%= form_tag(friendship_path(@was_invited.id), method: :delete) do |f| %>
+        <%= submit_tag  "Decline", data: { confirm: 'Are you sure you want to decline?' } %>
+      <% end %>
     <% elsif @invited.nil? && @was_invited.nil? %>
       <%= button_to "Invite", friendships_path(user_id: current_user.id, friend_id: @user.id) %>
     <% else %>

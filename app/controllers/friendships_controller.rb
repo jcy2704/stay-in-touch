@@ -16,4 +16,12 @@ class FriendshipsController < ApplicationController
     @friendship.save
     redirect_to users_path
   end
+
+  def destroy
+    @friendship = Friendship.find(params[:id])
+
+    @friendship.delete
+
+    redirect_to users_path
+  end
 end
