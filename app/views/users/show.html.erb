@@ -21,17 +21,18 @@
   </article>
 </section>
 
-<aside>
+<aside class="friends-list">
+  <h2>Friends</h2>
   <ul>
     <% @invites[:invited].where(status: true).each do |x| %>
     <li>
-      <%= User.find(x.friend_id).name %>
+      <%= link_to  User.find(x.friend_id).name, user_path(User.find(x.friend_id).id) %>
     </li>
     <% end %>
 
     <% @invites[:was_invited].where(status: true).each do |x| %>
     <li>
-      <%= User.find(x.user_id).name %>
+      <%= link_to  User.find(x.user_id).name, user_path(User.find(x.user_id).id) %>
     </li>
     <% end %>
   </ul>
