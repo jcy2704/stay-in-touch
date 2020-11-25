@@ -44,8 +44,15 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
+group :development, :test do
+  gem 'database_cleaner'
+  gem 'rspec-rails'
+end
+
 group :test do
+  gem 'capybara'
   gem 'rspec'
+  gem 'selenium-webdriver'
 end
 
 group :development do
