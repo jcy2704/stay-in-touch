@@ -7,7 +7,7 @@
         <% if invites[:was_invited].any? && !invites[:was_invited].find_by(user_id: user.id).nil? %>
           <% if invites[:was_invited].find_by(user_id: user.id).status == false %>
             <%= form_tag(friendship_path(invites[:was_invited].find_by(user_id: user.id).id), method: :patch) do |f| %>
-              <%= submit_tag  "Accept" %>
+              <%= submit_tag  'Accept' %>
             <% end %>
           <% else %>
             <%= label_tag 'Friends' %>
@@ -16,7 +16,9 @@
           <%= button_to  'Invite', friendships_path(friend_id: user.id) %>
         <%end%>
       <% elsif friendships.find_by(friend_id: user.id).status == false %>
-        <%= label_tag "Pending" %>
+        <%= label_tag 'Pending' %>
+      <% else %>
+        <%= label_tag 'Friends' %>
       <% end %>
     <% end %>
   </span>
