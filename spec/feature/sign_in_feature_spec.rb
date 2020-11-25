@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'sign in process', type: :feature do
-  before :each do
+  before(:each) do
     User.create(email: 'user@email.com', password: 'password', name: 'user1')
   end
 

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'forgot password', type: :feature do
-  before :each do
+  before(:each) do
     User.create(email: 'user@example.com', name: 'user', password: 'password')
   end
   it 'returns success if correct email' do

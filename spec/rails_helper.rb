@@ -70,7 +70,7 @@ require 'spec_helper'
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'capybara/rspec'
-
+require 'support/database_cleaner'
 # Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 ActiveRecord::Migration.maintain_test_schema!
@@ -83,7 +83,7 @@ Capybara.javascript_driver = :selenium_chrome
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
-  config.use_transactional_fixtures = false
+  config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
 
@@ -91,6 +91,20 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with(:truncation)
   end
 
+
+  config.before(:each, type: :feature) do
+    # :rack_test driver's Rack app under test shares database connection
+    # with the specs, so continue to use transaction strategy for speed.
+    driver_shares_db_connection_with_specs = Capybara.current_driver == :rack_test
+    
+    unless driver_shares_db_connection_with_specs
+    # Driver is probably for an external browser with an app
+    # under test that does *not* share a database connection with the
+    # specs, so use truncation strategy.
+    DatabaseCleaner.strategy = :truncation
+    end
+  end 
+  
   config.before(:each) do
     DatabaseCleaner.strategy = :transaction
   end
