@@ -1,5 +1,5 @@
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
+  <h2><%= "#{@user.name}" %></h2>
   <% if @user != current_user %>
     <% if !@invited.nil? && @invited.status == false %>
       <%= label_tag "Pending" %>
@@ -10,7 +10,7 @@
     <% elsif @invited.nil? && @was_invited.nil? %>
       <%= button_to "Invite", friendships_path(user_id: current_user.id, friend_id: @user.id) %>
     <% else %>
-      <%= label_tag 'Friends' %>
+      <%= label_tag 'Friends', nil, class:'friend-label' %>
     <% end %>
   <%end%>
   <article class="timeline">
@@ -20,3 +20,19 @@
     </ul>
   </article>
 </section>
+
+<aside>
+  <ul>
+    <% @invites[:invited].where(status: true).each do |x| %>
+    <li>
+      <%= User.find(x.friend_id).name %>
+    </li>
+    <% end %>
+
+    <% @invites[:was_invited].where(status: true).each do |x| %>
+    <li>
+      <%= User.find(x.user_id).name %>
+    </li>
+    <% end %>
+  </ul>
+</aside>
