@@ -9,8 +9,8 @@ RSpec.describe 'Invite friend', type: :feature do
 
   it 'Verify if there is a pending invitation on users#index page' do
     visit '/users/sign_in'
-    fill_in 'Email',	with: 'user@email.com'
-    fill_in 'Password',	with: 'password'
+    fill_in 'Email', with: 'user@email.com'
+    fill_in 'Password', with: 'password'
 
     click_button 'Log in'
 
@@ -23,7 +23,7 @@ RSpec.describe 'Invite friend', type: :feature do
 
     visit '/users/sign_in'
     fill_in 'Email', with: 'user@email.com'
-    fill_in 'Password',	with: 'password'
+    fill_in 'Password', with: 'password'
 
     click_button 'Log in'
 
@@ -37,7 +37,7 @@ RSpec.describe 'Invite friend', type: :feature do
 
     visit '/users/sign_in'
     fill_in 'Email', with: 'user@email.com'
-    fill_in 'Password',	with: 'password'
+    fill_in 'Password', with: 'password'
 
     click_button 'Log in'
 
@@ -52,7 +52,7 @@ RSpec.describe 'Invite friend', type: :feature do
 
     visit '/users/sign_in'
     fill_in 'Email', with: 'user@email.com'
-    fill_in 'Password',	with: 'password'
+    fill_in 'Password', with: 'password'
 
     click_button 'Log in'
 

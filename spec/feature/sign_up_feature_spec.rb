@@ -5,9 +5,9 @@ RSpec.describe 'sign up process', type: :feature do
     visit '/users/sign_up'
     within('#new_user') do
       fill_in 'Email', with: 'user@email.com'
-      fill_in 'Name',	with: 'user1'
-      fill_in 'Password',	with: 'password'
-      fill_in 'Password confirmation',	with: 'password'
+      fill_in 'Name', with: 'user1'
+      fill_in 'Password', with: 'password'
+      fill_in 'Password confirmation', with: 'password'
     end
     click_button 'Sign up'
     expect(page.status_code).to be(200)
@@ -18,9 +18,9 @@ RSpec.describe 'sign up process', type: :feature do
     visit '/users/sign_up'
     within('#new_user') do
       fill_in 'Email', with: 'user@email.com'
-      fill_in 'Name',	with: ''
-      fill_in 'Password',	with: 'password'
-      fill_in 'Password confirmation',	with: 'password'
+      fill_in 'Name', with: ''
+      fill_in 'Password', with: 'password'
+      fill_in 'Password confirmation', with: 'password'
     end
     click_button 'Sign up'
     expect(page).to have_content "Name can't be blank"
@@ -30,9 +30,9 @@ RSpec.describe 'sign up process', type: :feature do
     visit '/users/sign_up'
     within('#new_user') do
       fill_in 'Email', with: ''
-      fill_in 'Name',	with: 'user1'
-      fill_in 'Password',	with: 'password'
-      fill_in 'Password confirmation',	with: 'password'
+      fill_in 'Name', with: 'user1'
+      fill_in 'Password', with: 'password'
+      fill_in 'Password confirmation', with: 'password'
     end
     click_button 'Sign up'
     expect(page).to have_content "Email can't be blank"
@@ -42,9 +42,9 @@ RSpec.describe 'sign up process', type: :feature do
     visit '/users/sign_up'
     within('#new_user') do
       fill_in 'Email', with: 'user@email.com'
-      fill_in 'Name',	with: 'user1'
-      fill_in 'Password',	with: ''
-      fill_in 'Password confirmation',	with: 'password'
+      fill_in 'Name', with: 'user1'
+      fill_in 'Password', with: ''
+      fill_in 'Password confirmation', with: 'password'
     end
     click_button 'Sign up'
     expect(page).to have_content "Password can't be blank"
@@ -55,9 +55,9 @@ RSpec.describe 'sign up process', type: :feature do
     visit '/users/sign_up'
     within('#new_user') do
       fill_in 'Email', with: 'user@email.com'
-      fill_in 'Name',	with: 'user1'
-      fill_in 'Password',	with: 'password'
-      fill_in 'Password confirmation',	with: ''
+      fill_in 'Name', with: 'user1'
+      fill_in 'Password', with: 'password'
+      fill_in 'Password confirmation', with: ''
     end
     click_button 'Sign up'
     expect(page).to have_content "Password confirmation doesn't match Password"
@@ -67,9 +67,9 @@ RSpec.describe 'sign up process', type: :feature do
     visit '/users/sign_up'
     within('#new_user') do
       fill_in 'Email', with: 'user@email.com'
-      fill_in 'Name',	with: 'user1'
-      fill_in 'Password',	with: '123456'
-      fill_in 'Password confirmation',	with: 'password'
+      fill_in 'Name', with: 'user1'
+      fill_in 'Password', with: '123456'
+      fill_in 'Password confirmation', with: 'password'
     end
     click_button 'Sign up'
     expect(page).to have_content "Password confirmation doesn't match Password"
@@ -79,9 +79,9 @@ RSpec.describe 'sign up process', type: :feature do
     visit '/users/sign_up'
     within('#new_user') do
       fill_in 'Email', with: 'user@email.com'
-      fill_in 'Name',	with: 'user1'
-      fill_in 'Password',	with: ''
-      fill_in 'Password confirmation',	with: ''
+      fill_in 'Name', with: 'user1'
+      fill_in 'Password', with: ''
+      fill_in 'Password confirmation', with: ''
     end
     click_button 'Sign up'
     expect(page).to have_content "Password can't be blank"
