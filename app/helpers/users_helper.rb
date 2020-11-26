@@ -26,7 +26,7 @@ module UsersHelper
     elsif !was_invited.nil? && was_invited.status == false
       render partial: 'accept_form', locals: { friendreq: was_invited }
     elsif was_invited.nil? && invited.nil?
-      button_to 'invite', friendships_path(user_id: current_user.id, friend_id: user.id)
+      button_to 'Invite', friendships_path(user_id: current_user.id, friend_id: user.id)
     else
       label_tag 'Friends'
     end
