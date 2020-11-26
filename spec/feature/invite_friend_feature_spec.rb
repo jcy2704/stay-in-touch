@@ -4,7 +4,7 @@ RSpec.describe 'Invite friend', type: :feature do
   before(:each) do
     User.create(id: 1, email: 'user@email.com', password: 'password', name: 'user')
     User.create(id: 2, email: 'user2@email.com', password: 'password', name: 'user2')
-    Friendship.create(id: 1, user_id: 1, friend_id: 2, status: false)
+    Friendship.create(user_id: 1, friend_id: 2, status: false)
   end
 
   it 'Verify if there is a pending invitation on users#index page' do
@@ -32,7 +32,7 @@ RSpec.describe 'Invite friend', type: :feature do
   end
 
   it 'Verify if User declined the invitation' do
-    friend = Friendship.find(1)
+    friend = Friendship.find([1,2])
     friend.delete
 
     visit '/users/sign_in'
@@ -47,7 +47,7 @@ RSpec.describe 'Invite friend', type: :feature do
   end
 
   it 'Verify invitation button on profile page' do
-    friend = Friendship.find(1)
+    friend = Friendship.find([1,2])
     friend.delete
 
     visit '/users/sign_in'
