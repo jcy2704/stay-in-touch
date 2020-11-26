@@ -1,6 +1,6 @@
-# Scaffold for social media app with Ruby on Rails
+# Stay In Touch
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+Stay In Touch is a Social Media App, created using the RoRSocialScaffold by Microverse. We implemented a Friendship system where you can add/invite to be friends as well as a decline feature. We also added a friend list in the right side so people can see who befriended who.
 
 ## Built With
 
@@ -37,16 +37,6 @@ Setup database with:
    rails db:migrate
 ```
 
-### Github Actions
-
-To make sure the linters' checks using Github Actions work properly, you should follow the next steps:
-
-1. On your recently forked repo, enable the GitHub Actions in the Actions tab.
-2. Create the `feature/branch` and push.
-3. Start working on your milestone as usual.
-4. Open a PR from the `feature/branch` when your work is done.
-
-
 ### Usage
 
 Start server with:
@@ -63,7 +53,6 @@ Open `http://localhost:3000/` in your browser.
     rpsec --format documentation
 ```
 
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
 
 ### Deployment
 
@@ -71,23 +60,25 @@ TBA
 
 ## Authors
 
-TBA
+👤 **Steven Jack Chung**
+
+- GitHub: [@jcy2704](https://github.com/jcy2704)
+- Twitter: [@yiak_](https://twitter.com/yiak_)
+- LinkedIn: [Steven Jack Chung](https://linkedin.com/in/stevenjchung)
+
+👤 **Marcelo Fernandes**
+
+- GitHub: [@marcelomaidden](https://github.com/marcelomaidden)
+- Twitter: [@marcelomaidden](https://twitter.com/marcelomaidden)
+- LinkedIn: [Marcelo Fernandes](https://linkedin.com/in/marcelofernandesdearaujo)
+
 
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](https://github.com/jcy2704/stay-in-touch/issues/).
 
 ## Show your support
 
 Give a ⭐️ if you like this project!
-
-## Acknowledgments
-
-TBA
-
-## 📝 License
-
-TBA
-
