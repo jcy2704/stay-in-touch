@@ -6,12 +6,10 @@ class Friendship < ApplicationRecord
   belongs_to :friend, class_name: 'User'
 
   def find_lesser_id
-    if user_id > friend_id
+    if self.user_id > self.friend_id
       puts "It entered here?"
-      id = user_id
-      user_id! = friend_id
-      friend_id! = id
-      puts user_id, friend_id
+      self.user_id, self.friend_id = self.friend_id, self.user_id
+      puts self.user_id, self.friend_id
     end
   end
 end
