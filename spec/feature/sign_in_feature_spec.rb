@@ -8,7 +8,7 @@ RSpec.describe 'sign in process', type: :feature do
   it 'signs if user exits' do
     visit '/users/sign_in'
     within('#new_user') do
-      fill_in 'Email',	with: 'user@email.com'
+      fill_in 'Email', with: 'user@email.com'
       fill_in 'Password',	with: 'password'
     end
     click_button 'Log in'
@@ -18,7 +18,7 @@ RSpec.describe 'sign in process', type: :feature do
   it 'raise error if wrong password' do
     visit '/users/sign_in'
     within('#new_user') do
-      fill_in 'Email',	with: 'user@email.com'
+      fill_in 'Email', with: 'user@email.com'
       fill_in 'Password',	with: ''
     end
     click_button 'Log in'
@@ -28,7 +28,7 @@ RSpec.describe 'sign in process', type: :feature do
   it 'raise error if wrong email' do
     visit '/users/sign_in'
     within('#new_user') do
-      fill_in 'Email',	with: ''
+      fill_in 'Email', with: ''
       fill_in 'Password',	with: 'password'
     end
     click_button 'Log in'
@@ -38,7 +38,7 @@ RSpec.describe 'sign in process', type: :feature do
   it 'raise error if fields empty' do
     visit '/users/sign_in'
     within('#new_user') do
-      fill_in 'Email',	with: ''
+      fill_in 'Email', with: ''
       fill_in 'Password',	with: ''
     end
     click_button 'Log in'

@@ -22,7 +22,7 @@ RSpec.describe 'Invite friend', type: :feature do
     Friendship.update(user_id: 1, friend_id: 2, status: true)
 
     visit '/users/sign_in'
-    fill_in 'Email',	with: 'user@email.com'
+    fill_in 'Email', with: 'user@email.com'
     fill_in 'Password',	with: 'password'
 
     click_button 'Log in'
@@ -32,11 +32,11 @@ RSpec.describe 'Invite friend', type: :feature do
   end
 
   it 'Verify if User declined the invitation' do
-    friend = Friendship.find([1,2])
+    friend = Friendship.find([1, 2])
     friend.delete
 
     visit '/users/sign_in'
-    fill_in 'Email',	with: 'user@email.com'
+    fill_in 'Email', with: 'user@email.com'
     fill_in 'Password',	with: 'password'
 
     click_button 'Log in'
@@ -47,11 +47,11 @@ RSpec.describe 'Invite friend', type: :feature do
   end
 
   it 'Verify invitation button on profile page' do
-    friend = Friendship.find([1,2])
+    friend = Friendship.find([1, 2])
     friend.delete
 
     visit '/users/sign_in'
-    fill_in 'Email',	with: 'user@email.com'
+    fill_in 'Email', with: 'user@email.com'
     fill_in 'Password',	with: 'password'
 
     click_button 'Log in'
