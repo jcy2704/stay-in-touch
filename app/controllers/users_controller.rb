@@ -7,7 +7,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.ordered_by_most_recent
+    ids = Friendship.where(user_id: current_user, status: true).pluck(:friend_id)
+    ids << current_user.id
+    @posts = @user.posts.ordered_by_most_recent if ids.include?(@user.id)
     @invites = Friendship.all.where(user_id: @user.id, status: true)
     @invites = @invites.or(Friendship.where(friend_id: @user.id, status: true))
   end
