@@ -29,11 +29,12 @@ module UsersHelper
   end
 
   def show_friend(user)
-    invited = Friendship.find_by(user_id: current_user.id, friend_id: user.id)
-    was_invited = Friendship.find_by(user_id: user.id, friend_id: current_user.id)
-    if !invited.nil? && invited.status == false
+    # invited = Friendship.find_by(user_id: current_user.id, friend_id: user.id)
+    # was_invited = Friendship.find_by(user_id: user.id, friend_id: current_user.id)
+
+    if current_user.pending_friends.include? user
       label_tag 'Pending'
-    elsif !was_invited.nil? && was_invited.status == false
+    elsif current_user.friend_requests.include? user
       render partial: 'accept_form', locals: { friendreq: was_invited }
     elsif was_invited.nil? && invited.nil?
       button_to 'Invite', friendships_path(user_id: current_user.id, friend_id: user.id)
