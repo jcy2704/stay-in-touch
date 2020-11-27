@@ -9,13 +9,10 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   def self.posts_timeline(current_user)
-    find_by_sql(['SELECT p.*
-      FROM posts p
-      JOIN users u ON u.id = p.user_id
-      LEFT JOIN friendships f ON f.user_id = p.user_id
-      AND f.friend_id = ?
-      AND f.status = true
-      WHERE COALESCE(f.friend_id, p.user_id) = ?
-      ORDER BY p.created_at DESC', current_user, current_user])
+    ids = Friendship.where(user_id: current_user, status: true).pluck(:friend_id)
+    ids << current_user
+    
+    posts = Post.where(user_id: ids)
+  
   end
 end
