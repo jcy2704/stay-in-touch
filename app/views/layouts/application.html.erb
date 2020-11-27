@@ -10,23 +10,28 @@
   <body>
     <nav class="nav">
       <%= link_to 'Stay in touch', root_path %>
-      <div class="menu">
-        <div class="menu-item">
-          <%= menu_link_to 'Timeline', posts_path %>
+      <% if user_signed_in? %>
+        <div class="menu">
+          <div class="menu-item">
+            <%= menu_link_to 'Timeline', posts_path %>
+          </div>
+          <div class="menu-item">
+            <%= menu_link_to 'All users', users_path %>
+          </div>
+          <div class="menu-item">
+            <%= menu_link_to 'My Friends', friendships_path %>
+          </div>
         </div>
-        <div class="menu-item">
-          <%= menu_link_to 'All users', users_path %>
-        </div>
-        <div class = "sign">
+      <% end %>
+      <div class = "sign">
         <% if current_user %>
-              <%= current_user.name %>
-              <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-          <% else %>
-            <%= link_to 'Sign in', user_session_path %>
-          <% end %>
-        </div>
+          <%= link_to current_user.name, user_path(current_user.id), class: 'menu-item' %>
+          <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to 'Sign in', user_session_path, class: 'menu-item' %>
+          <%= link_to  'Sign up', new_user_registration_path, class: 'menu-item' %>
+        <% end %>
       </div>
- 
     </nav>
     <% if notice.present? %>
       <div class="notice">
