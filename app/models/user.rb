@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   has_many :friendships
   has_many :friends, through: :friendships, source: :friend
-
+  has_many :f_posts, through: :friends, source: :posts
   def friends_join(param)
     i_invited = Friendship.where('user_id = ?', param)
     i_was_invited = Friendship.where('friend_id = ?', param)
