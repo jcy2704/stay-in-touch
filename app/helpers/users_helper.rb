@@ -17,7 +17,7 @@ module UsersHelper
     elsif user.friends.include?(current_user)
       label_tag 'Friends'
     else
-      button_to 'Invite', friendships_path(friend_id: user.id)
+      button_to 'Add Friend', friendships_path(friend_id: user.id)
     end
   end
 
@@ -27,7 +27,7 @@ module UsersHelper
     elsif user.friend_requests.include?(current_user)
       render partial: 'accept_form', locals: { friendreq: user.friendships.where(friend_id: current_user.id).ids.split('/').join(',') }
     elsif !user.friends.include?(current_user)
-      button_to 'Invite', friendships_path(user_id: current_user.id, friend_id: user.id)
+      button_to 'Add Friend', friendships_path(user_id: current_user.id, friend_id: user.id)
     else
       label_tag 'Friends'
     end
