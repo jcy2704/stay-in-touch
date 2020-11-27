@@ -11,7 +11,9 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   has_many :friendships
-  has_many :friends, through: :friendships, source: :friend
+  has_many :confirmed_friendships, -> { where status: true }, class_name: "Friendship"
+  has_many :friends, through: :confirmed_friendships
+
   has_many :f_posts, through: :friends, source: :posts
   def friends_join(param)
     i_invited = Friendship.where('user_id = ?', param)
