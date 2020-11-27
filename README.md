@@ -9,7 +9,7 @@ Stay In Touch is a Social Media App, created using the RoRSocialScaffold by Micr
 
 ## Live Demo
 
-TBA
+[SIT - Social Media](http://sit-social-media.herokuapp.com/)
 
 
 ## Getting Started
@@ -56,7 +56,32 @@ Open `http://localhost:3000/` in your browser.
 
 ### Deployment
 
-TBA
+In order to deploy this app to Heroku follow the steps below
+
+Install the Heroku CLI available [here](https://devcenter.heroku.com/articles/heroku-cli)
+
+After that type the command to create the app and add the heroku repository to your project
+
+```
+    heroku create
+```
+
+Then deploy the app.
+
+```
+    git push -u heroku {you-branch}:master
+```
+    
+Change {your-branch} for the name of your local branch
+
+Follow the instructions on your terminal to get the URL where your app was deployed
+
+
+Finally run the command to create your database and tables on Heroku's server
+
+```
+    heroku run rails db:migrate
+``` 
 
 ## Authors
 
