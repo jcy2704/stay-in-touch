@@ -15,8 +15,11 @@ class Post < ApplicationRecord
       LEFT JOIN friendships f ON f.user_id = p.user_id
       AND f.friend_id = ?
       AND f.status = true
-      WHERE COALESCE(f.friend_id, p.user_id)
-      IN (SELECT f.friend_id FROM friendships f WHERE f.user_id = ? OR f.friend_id = ?)
-      ORDER BY p.created_at DESC', current_user, current_user, current_user])
+      WHERE COALESCE(f.friend_id, p.user_id) = ?
+      ORDER BY p.created_at DESC', current_user, current_user])
   end
+
+  # friends = Friendship.find_by(user_id:current_user)
+  # friends_posts = Post.find_by(user_id:friends.friend_id)
+  # end
 end

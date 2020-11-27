@@ -10,6 +10,10 @@ class Friendship < ApplicationRecord
   private
 
   def reverse_id
-    self.user_id, self.friend_id = friend_id, user_id if user_id > friend_id
+    # self.user_id, self.friend_id = friend_id, user_id if user_id > friend_id
+    @new_user = friend_id
+    @new_friend = user_id
+
+    Friendship.create(user_id: @new_user, friend_id: @new_friend, status: true)
   end
 end
