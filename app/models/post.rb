@@ -18,8 +18,4 @@ class Post < ApplicationRecord
       WHERE COALESCE(f.friend_id, p.user_id) = ?
       ORDER BY p.created_at DESC', current_user, current_user])
   end
-
-  # friends = Friendship.find_by(user_id:current_user)
-  # friends_posts = Post.find_by(user_id:friends.friend_id)
-  # end
 end
