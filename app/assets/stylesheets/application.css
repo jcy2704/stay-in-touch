@@ -16,3 +16,8 @@
 .sign {
   float: right;
 }
+
+.menu-item {
+  float: left;
+  margin: 0 15px;
+}
