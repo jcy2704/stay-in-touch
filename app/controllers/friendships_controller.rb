@@ -8,15 +8,14 @@ class FriendshipsController < ApplicationController
 
   def update
     @friendship = Friendship.find(params[:id])
+    @friendship.confirm_friend
 
-    @friendship.status = true
-    @friendship.save
     redirect_to users_path
   end
 
   def destroy
     @friendship = Friendship.find(params[:id])
-
+    w
     @friendship.delete
 
     redirect_to users_path

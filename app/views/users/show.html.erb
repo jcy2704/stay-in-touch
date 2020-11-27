@@ -12,10 +12,10 @@
 <aside class="friends-list">
   <h2>Friends</h2>
   <ul>
-    <% @invites.each do |x| %>
+    <% @user.friends.each do |x| %>
     <li>
-      <%= friend_list(@user, x) %>
+      <%= friend_list(x) %>
     </li>
-    <%end%>
+    <% end %>
   </ul>
 </aside>

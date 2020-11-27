@@ -11,8 +11,7 @@ class Post < ApplicationRecord
   def self.posts_timeline(current_user)
     ids = Friendship.where(user_id: current_user, status: true).pluck(:friend_id)
     ids << current_user
-    
+
     posts = Post.where(user_id: ids)
-  
   end
 end

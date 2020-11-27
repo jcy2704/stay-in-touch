@@ -1,42 +1,30 @@
-# rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
-
 module UsersHelper
   def friendship(user)
     not_current_user(user) if user != current_user
   end
 
-  def friend_list(user, friendship)
-    if friendship.user_id == user.id
-      link_to User.find(friendship.friend_id).name, user_path(User.find(friendship.friend_id).id)
-    else
-      link_to User.find(friendship.user_id).name, user_path(User.find(friendship.user_id).id)
-    end
+  def friend_list(user)
+    link_to user.name, user_path(user.id)
   end
 
   private
 
   def index_friendship(user)
-    invites = current_user.friends_join(current_user.id)
-    if invites[:was_invited].any? && !invites[:was_invited].find_by(user_id: user.id).nil?
-      if invites[:was_invited].find_by(user_id: user.id).status == false
-        render partial: 'accept_form', locals: { friendreq: invites[:was_invited].find_by(user_id: user.id) }
-      else
-        label_tag 'Friends'
-      end
+    if user.pending_friends.include?(current_user)
+      render partial: 'accept_form', locals: { friendreq: user.friendships.where(friend_id: current_user.id).ids }
+    elsif user.friends.include?(current_user)
+      label_tag 'Friends'
     else
       button_to 'Invite', friendships_path(friend_id: user.id)
     end
   end
 
   def show_friend(user)
-    # invited = Friendship.find_by(user_id: current_user.id, friend_id: user.id)
-    # was_invited = Friendship.find_by(user_id: user.id, friend_id: current_user.id)
-
-    if current_user.pending_friends.include? user
+    if current_user.pending_friends.include?(user)
       label_tag 'Pending'
-    elsif current_user.friend_requests.include? user
-      render partial: 'accept_form', locals: { friendreq: was_invited }
-    elsif was_invited.nil? && invited.nil?
+    elsif user.friend_requests.include?(current_user)
+      render partial: 'accept_form', locals: { friendreq: user.friendships.where(friend_id: current_user.id).ids }
+    elsif !user.friends.include?(current_user)
       button_to 'Invite', friendships_path(user_id: current_user.id, friend_id: user.id)
     else
       label_tag 'Friends'
@@ -57,4 +45,3 @@ module UsersHelper
   end
 end
 
-# rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
