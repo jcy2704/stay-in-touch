@@ -1,3 +1,5 @@
+# rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+
 module UsersHelper
   def friendship(user)
     not_current_user(user) if user != current_user
@@ -53,3 +55,5 @@ module UsersHelper
     end
   end
 end
+
+# rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
