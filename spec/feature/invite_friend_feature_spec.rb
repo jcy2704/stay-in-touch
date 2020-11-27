@@ -43,7 +43,7 @@ RSpec.describe 'Invite friend', type: :feature do
 
     visit '/users'
 
-    expect(page).to have_button 'Invite'
+    expect(page).to have_button 'Add Friend'
   end
 
   it 'Verify invitation button on profile page' do
@@ -58,6 +58,6 @@ RSpec.describe 'Invite friend', type: :feature do
 
     visit '/users/2'
 
-    expect(page).to have_button 'Invite'
+    expect(page).to have_button 'Add Friend'
   end
 end
