@@ -12,6 +12,6 @@ class Post < ApplicationRecord
     ids = Friendship.where(user_id: current_user, status: true).pluck(:friend_id)
     ids << current_user
 
-    posts = Post.where(user_id: ids)
+    Post.where(user_id: ids)
   end
 end

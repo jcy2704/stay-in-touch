@@ -1,3 +1,5 @@
+# rubocop:disable Layout/LineLength
+
 module UsersHelper
   def friendship(user)
     not_current_user(user) if user != current_user
@@ -45,3 +47,4 @@ module UsersHelper
   end
 end
 
+# rubocop:enable Layout/LineLength
