@@ -12,16 +12,10 @@
 <aside class="friends-list">
   <h2>Friends</h2>
   <ul>
-    <% @invites[:invited].where(status: true).each do |x| %>
+    <% @invites.each do |x| %>
     <li>
-      <%= link_to  User.find(x.friend_id).name, user_path(User.find(x.friend_id).id) %>
+      <%= friend_list(@user, x) %>
     </li>
-    <% end %>
-
-    <% @invites[:was_invited].where(status: true).each do |x| %>
-    <li>
-      <%= link_to  User.find(x.user_id).name, user_path(User.find(x.user_id).id) %>
-    </li>
-    <% end %>
+    <%end%>
   </ul>
 </aside>

@@ -5,6 +5,14 @@ module UsersHelper
     not_current_user(user) if user != current_user
   end
 
+  def friend_list(user, friendship)
+    if friendship.user_id == user.id
+      link_to User.find(friendship.friend_id).name, user_path(User.find(friendship.friend_id).id)
+    else
+      link_to User.find(friendship.user_id).name, user_path(User.find(friendship.user_id).id)
+    end
+  end
+
   private
 
   def index_friendship(user)
